@@ -1,0 +1,36 @@
+services:
+  backend:
+    build: ./backend
+    restart: unless-stopped
+    env_file:
+      - ./backend/.env
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:////data/autobiography.db
+      CORS_ORIGINS: ${CORS_ORIGINS:-http://jiumozhi.tech:6985}
+    command: uvicorn app.main:app --host 0.0.0.0 --port 6986 --workers 2
+    ports:
+      - "6986:6986"
+    volumes:
+      - backend_data:/data
+    networks:
+      - web
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://jiumozhi.tech:6986/api}
+        NEXT_PUBLIC_SITE_URL: ${NEXT_PUBLIC_SITE_URL:-http://jiumozhi.tech:6985}
+    restart: unless-stopped
+    depends_on:
+      - backend
+    ports:
+      - "6985:3000"
+    networks:
+      - web
+
+volumes:
+  backend_data:
+
+networks:
+  web:

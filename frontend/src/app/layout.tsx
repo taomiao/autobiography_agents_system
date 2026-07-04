@@ -9,6 +9,7 @@ const geistSans = Geist({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://jiumozhi.tech:6985"),
   title: "自传 Agent",
   description: "AI 驱动的自传写作助手 — 采访、写作、精准修改",
 };

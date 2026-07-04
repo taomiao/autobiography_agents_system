@@ -23,7 +23,7 @@ class Settings(BaseSettings):
     openai_api_key: str = ""
     deepseek_api_key: str = ""
     database_url: str = "sqlite+aiosqlite:///./autobiography.db"
-    cors_origins: str = "http://localhost:3000"
+    cors_origins: str = "http://localhost:6985"
 
     @property
     def cors_origin_list(self) -> list[str]:

@@ -7,7 +7,7 @@ const MIN_SPLASH_MS = 1600;
 const EXIT_MS = 500;
 
 function getHealthUrl(): string {
-  const api = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api";
+  const api = process.env.NEXT_PUBLIC_API_URL || "http://localhost:6986/api";
   return api.replace(/\/api\/?$/, "/health");
 }
 

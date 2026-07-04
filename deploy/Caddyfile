@@ -1,0 +1,12 @@
+# 可选：若将来改用 80/443 + HTTPS，可参考此 Caddy 配置
+# 当前生产环境直接使用 6985（前端）/ 6986（后端）端口
+
+# jiumozhi.tech {
+# 	encode gzip
+# 	reverse_proxy frontend:3000
+# }
+#
+# api.jiumozhi.tech {
+# 	encode gzip
+# 	reverse_proxy backend:6986
+# }
