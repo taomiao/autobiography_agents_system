@@ -189,7 +189,8 @@ start_docker() {
   ensure_backend_env
   cd "$ROOT_DIR"
 
-  info "构建并启动 Docker 容器..."
+  info "构建并启动 Docker 容器（本地开发模式）..."
+  warn "公网服务器请使用: ./start.sh prod"
   docker_compose up --build -d
 
   wait_for_url "http://localhost:${BACKEND_PORT}/health" "后端" 45 || true
